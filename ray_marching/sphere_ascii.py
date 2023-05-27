@@ -21,7 +21,7 @@ class RayMarching:
         self.light = np.array([-1, 1, 0])
 
     def show_screen(self):
-        """ Showing our canvas """
+        """ Визуализирует рабочую поверхность """
 
         os.system("clear")
 
@@ -29,7 +29,7 @@ class RayMarching:
             print("".join(row))
 
     def lenght(self, p1, p2=(0, 0, 0)):
-        """ Returns the lenght between two points """
+        """ Возвращает расстояние между двумя точками """
 
         return np.sqrt(
             (p1[0] - p2[0]) ** 2 + 
@@ -38,7 +38,7 @@ class RayMarching:
         )
 
     def vec_cosines(self, point_1, point_2):
-        """ Returns cosines between two zero-vectors """
+        """ Возвращает косинус между двумя векторами """
 
         return (
             (point_2[0] * point_1[0] + point_2[1] * point_1[1] + point_2[2] * point_1[2]) / 
@@ -83,9 +83,13 @@ class RayMarching:
         pass
 
     def SDF_sphere(self, p):
+        """ Знаковая функция сферы """
+
         return self.lenght([p[0], p[1], p[2]], self.sphere)  - self.radius
     
     def get_sphere(self, axis, angle):
+        """ Вычисления поверхности сферы """
+
         for x_, x in enumerate(self.x_line):
             for y_, y in enumerate(self.y_line):
                 z = 0
